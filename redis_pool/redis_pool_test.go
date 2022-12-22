@@ -16,4 +16,11 @@ func TestRedisPool(t *testing.T) {
 
 	fmt.Println(GetRedisInstance().Ping())
 
+	//set value
+	GetRedisInstance().Do("SET", "xiangzai", "Happiness")
+
+	var tt string
+	GetRedisInstance().GetValue("xiangzai", &tt)
+	fmt.Println("xiangzai", tt)
+
 }
