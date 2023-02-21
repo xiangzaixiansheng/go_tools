@@ -49,13 +49,11 @@ func (p *ReqParams) InitRequest() (req Curl, err error) {
 			}
 			obj.req.URL.RawQuery = q.Encode()
 			fmt.Println(obj.req.URL.String())
-			fmt.Println("come in===== get")
 		} else {
 			//post 请求.
 			body, _ := json.Marshal(p.Params)
 			reqParams = bytes.NewReader(body)
 			obj.req, err = http.NewRequest(p.Method, p.Url, reqParams)
-			fmt.Println("come in===== post")
 		}
 	} else {
 		obj.req, err = http.NewRequest(p.Method, p.Url, nil)
