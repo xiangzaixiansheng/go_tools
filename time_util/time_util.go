@@ -1,6 +1,10 @@
 package time_util
 
-import "time"
+import (
+	"fmt"
+	"strings"
+	"time"
+)
 
 const (
 	//timeVal
@@ -83,4 +87,35 @@ func ExpireDaysNight(stamp int64, days int64) (time.Duration, error) {
 // GetUtcTime 获取本地时间戳
 func GetUtcTime() int64 {
 	return time.Now().Unix() //- 8*60*60
+}
+
+func Localtime() string {
+	now := time.Now().Local()
+	year, mon, day := now.Date()
+	hour, min, sec := now.Clock()
+	zone, _ := now.Zone()
+	return fmt.Sprintf("%d-%d-%d %02d:%02d:%02d %s", year, mon, day, hour, min, sec, zone)
+}
+
+func charToCode(layout string) string {
+	characters := []string{
+		"y", "06",
+		"m", "1",
+		"d", "2",
+		"Y", "2006",
+		"M", "01",
+		"D", "02",
+
+		"h", "03",
+		"H", "15",
+		"i", "4",
+		"s", "5",
+		"I", "04",
+		"S", "05",
+
+		"t", "pm",
+		"T", "PM",
+	}
+	replacer := strings.NewReplacer(characters...)
+	return replacer.Replace(layout)
 }
