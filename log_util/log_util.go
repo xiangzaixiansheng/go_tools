@@ -28,6 +28,8 @@ func init() {
 	logger.SetOutput(io.MultiWriter(writer1_file, writer2_console))
 	//设置日志级别
 	logger.SetLevel(logrus.DebugLevel)
+	// 取消线程安全
+	logger.SetNoLock()
 	//设置日志格式
 	logger.SetFormatter(&logrus.JSONFormatter{
 		TimestampFormat: "2006-01-02 15:04:05",
