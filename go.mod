@@ -19,5 +19,6 @@ require (
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.9.3
+	github.com/sony/sonyflake v1.2.0
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
